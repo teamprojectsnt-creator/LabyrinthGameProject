@@ -2,7 +2,7 @@
 import { Icons } from "../data/labirint.js"
 import { timeStart } from "../time/time.js"
 
-class RightMove {
+export class RightMove {
     static rightMove(player){
         // console.log(player.getInfo.get('startTime'))
         if (!player.getInfo.get('startTime')){
