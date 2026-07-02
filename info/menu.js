@@ -72,3 +72,16 @@ export function start () {
             }
         };
 }
+
+export function moveInfo () {
+    return `══════════════════════════════════════════════════════════════
+                       BOSHQARUV
+══════════════════════════════════════════════════════════════
+
+W — Tepaga
+A — Chapga
+S — Pastga
+D — O'ngga
+
+`
+}
