@@ -1,3 +1,4 @@
+import labirint from "../data/labirint.js"
 export class Player {
     constructor(name , id){
         this.name = name;
@@ -8,7 +9,7 @@ export class Player {
     #endTime = undefined;
     #stars = 0;
     #steps = [];
-    #labirints = [];
+    #labirint = labirint;
 
     //get info
     //all set
@@ -35,7 +36,7 @@ export class Player {
 
     set setLabirint(map){
         if (!map.length) return
-        this.#labirints = map;
+        this.#labirint = map;
     }
 
     get getInfo(){
@@ -44,7 +45,10 @@ export class Player {
             ['endTime', this.#endTime],
             ['stars', this.#stars],
             ['steps', this.#steps],
-            ['labirints', this.#labirints]
+            ['labirint', new Map([
+                ['labirint', this.#labirint],
+                ['location', [12,11]]
+            ])]
         ])
     }
 }
