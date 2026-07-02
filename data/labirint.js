@@ -19,6 +19,7 @@ export class Icons{
     static road = "⬜️"
     static wall = "🔳"
     static finish = "🔲"
+    static death = "☠️ "
 
     static player(){
         return this.player
@@ -33,6 +34,3 @@ export class Icons{
         return this.finish
     }
 }
-
-
-
