@@ -1,4 +1,4 @@
-import labirint from "../data/labirint.js"
+import {labirint} from "../data/labirint.js"
 export class Player {
     constructor(name , id){
         this.name = name;
