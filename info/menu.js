@@ -1,9 +1,9 @@
-import { Player } from '../class.js'
+import { Player } from '../Player/Player.js'
 import promptSync from 'prompt-sync';
 
 export const prompt = promptSync();
 
-export function showIntro() {
+function showIntro() {
     console.clear();
 
     console.log(`
@@ -63,13 +63,12 @@ export function start () {
             console.log("1 - O`yinni boshlash");
             console.log("0 - Dasturdan chiqish");
         
-            let entry = prompt(">>> ");
-            switch(entry){
-                case '1':   console.log(Player.id, Player.name);
-                case '0':   console.log("O'yin tugadi");
-                default: console.log("\nXato tanlov!, faqat berilgan variantlardan birini tanlang!");
-            };
+            let entry = +prompt(">>> ");
+            console.log(entry)
+            if (entry){
+                return newPlayer
+            } else {
+                return 0
+            }
         };
 }
-
-start()
