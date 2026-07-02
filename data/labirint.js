@@ -14,7 +14,7 @@ export const labirint = [
     ['🔳', '🔳', '🔳', '🔳', '🔳', '🔳', '🔳', '🔳', '🔳', '🔳', '🔳', '🕵️ ', '🔳']
   ];
 
-class Icons{
+export class Icons{
     #player = "🕵️ "
     #road = "⬜️"
     #wall = "🔳"
