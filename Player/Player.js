@@ -40,8 +40,8 @@ export class Player {
 
     get getInfo(){
         return new Map([
-            ['startTiem', this.#startTime],
-            ['endTiem', this.#endTime],
+            ['startTime', this.#startTime],
+            ['endTime', this.#endTime],
             ['stars', this.#stars],
             ['steps', this.#steps],
             ['labirints', this.#labirints]
