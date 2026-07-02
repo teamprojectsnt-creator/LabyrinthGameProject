@@ -1,6 +1,5 @@
-import PromptSync from "prompt-sync";
 import { Player } from "../Player/Player.js";
-import { labirint, Icons} from "../data/labirint.js"
+import { Icons } from "../data/labirint.js"
 
 
 class RightMove {
@@ -9,10 +8,6 @@ class RightMove {
         const labirint = player.getInfo.get('labirint').get('labirint');
 
         labirint[location[0]][location[1]] = Icons.road;
-
-        for(const row of player.getInfo.get("labirint").get("labirint")){
-            console.log(row.join(""))
-        }
 
         ++location[1];
 
@@ -28,19 +23,13 @@ class RightMove {
             return 'continue'; 
         }
 
-        for(const row of player.getInfo.get("labirint").get("labirint")){
-            console.log(row.join(""))
-        }
 
-        
     }       
 }
 
 
 
-const player = new Player("a", 1)
 
-RightMove.rightMove(player);
 
 
 
