@@ -1,4 +1,6 @@
 import { start, prompt, moveInfo } from "./info/menu.js"
+import { RightMove } from "./move/right.js"
+
 const player = start()
 while (true) {
     for(const row of player.getInfo.get("labirint").get("labirint")){
@@ -8,13 +10,25 @@ while (true) {
     const choice = prompt("yuring: ")
     switch (choice) {
         case "a":
-            (player)
             break;
         case "w":
             
             break;
         case "d":
-            
+            const result = RightMove.rightMove(player)
+            console.clear()
+            switch (result) {
+                case "continue":
+                    continue
+                    break;
+                case "death":
+                    break;
+                case "finish":
+                    break;
+                default:
+                    console.log("xato tanladingiz❗️")
+                    break;
+            }
             break;
         case "s":
             
@@ -24,5 +38,3 @@ while (true) {
             continue
     }
 }
-// console.log(player.getInfo.get("labirint").get("labirint"))
-if (!player) console.log("O'yin tugadi")
