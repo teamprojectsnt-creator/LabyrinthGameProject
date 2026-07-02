@@ -64,7 +64,7 @@ export function start () {
             console.log("0 - Dasturdan chiqish");
         
             let entry = +prompt(">>> ");
-            console.log(entry)
+            console.clear()
             if (entry){
                 return newPlayer
             } else {
