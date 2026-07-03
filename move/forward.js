@@ -31,3 +31,8 @@ export class ForwardMove {
 const player = new Player('A', 1);
 
 console.log(ForwardMove.forward());
+
+
+
+
+
