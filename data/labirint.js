@@ -14,23 +14,25 @@ export const labirint = [
     ['🔳', '🔳', '🔳', '🔳', '🔳', '🔳', '🔳', '🔳', '🔳', '🔳', '🔳', '🕵️ ', '🔳']
   ];
 
-class Icons{
-    #player = "🕵️ "
-    #road = "⬜️"
-    #wall = "🔳"
-    #finish = "🔲"
 
-    get player(){
-        return this.#player
+export class Icons{
+    static player = "🕵️ "
+    static road = "⬜️"
+    static wall = "🔳"
+    static finish = "🔲"
+    static death = "☠️ "
+
+    static player(){
+        return this.player
     }
-    get player(){
-        return this.#road
+    static player(){
+        return this.road
     }
-    get player(){
-        return this.#wall
+    static player(){
+        return this.wall
     }
-    get player(){
-        return this.#finish
+    static player(){
+        return this.finish
     }
 }
 

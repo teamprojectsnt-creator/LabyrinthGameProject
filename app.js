@@ -1,8 +1,42 @@
-import { start } from "./info/menu.js"
+import { start, prompt, moveInfo } from "./info/menu.js"
+import { RightMove } from "./move/right.js"
 
 const player = start()
-for(const row of player.getInfo.get("labirint").get("labirint")){
-    console.log(row.join(""))
+while (true) {
+    for(const row of player.getInfo.get("labirint").get("labirint")){
+        console.log(row.join(""))
+    }
+    console.log(moveInfo())
+    const choice = prompt("yuring: ")
+    switch (choice) {
+        case "a":
+            break;
+        case "w":
+            
+            break;
+        case "d":
+            const result = RightMove.rightMove(player)
+            console.clear()
+            switch (result) {
+                case "continue":
+                    continue
+                    break;
+                case "death":
+                    break;
+                case "finish":
+                    break;
+                default:
+                    console.log("xato tanladingiz❗️")
+                    break;
+            }
+            break;
+        case "s":
+            break;
+        case "x":
+            process.exit(0)
+            break;
+        default:
+            console.log("xato tanlov qildingiz❌ Iltimos qaytadan kiriting❗️")
+            continue
+    }
 }
-// console.log(player.getInfo.get("labirint").get("labirint"))
-if (!player) console.log("O'yin tugadi")

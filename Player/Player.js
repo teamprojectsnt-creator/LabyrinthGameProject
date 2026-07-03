@@ -5,6 +5,7 @@ export class Player {
         this.id = id;
     }
 
+    #location = [11,1]
     #startTime = undefined;
     #endTime = undefined;
     #stars = 0;
@@ -39,17 +40,24 @@ export class Player {
         this.#labirint = map;
     }
 
+    set setLocation(arr){
+        try {
+        if (!arr.length) return;
+        } catch {
+            return;
+        } 
+        this.#location = arr;
+    }
+
     get getInfo(){
         return new Map([
             ['startTime', this.#startTime],
             ['endTime', this.#endTime],
             ['stars', this.#stars],
             ['steps', this.#steps],
-            ['labirint', new Map([
-                ['labirint', this.#labirint],
-                ['location', [12,11]]
-            ])]
-        ])
+            ['labirint', this.#labirint],
+            ['location', this.#location]
+            ])
     }
 }
 

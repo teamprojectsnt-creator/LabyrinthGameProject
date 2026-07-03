@@ -1,3 +1,4 @@
+
 import { labirint } from "../data/labirint.js";
 import { Player } from "../Player/Player.js";
 import { Icons } from "../data/labirint.js";
