@@ -2,8 +2,9 @@ import { start, prompt, moveInfo } from "./info/menu.js"
 import { RightMove } from "./move/right.js"
 
 const player = start()
+
 while (true) {
-    for(const row of player.getInfo.get("labirint").get("labirint")){
+    for(const row of player.getInfo.get("labirint")){
         console.log(row.join(""))
     }
     console.log(moveInfo())
