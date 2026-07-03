@@ -5,13 +5,12 @@ import { BackMove } from "./move/back.js"
 import { LeftMove } from "./move/left.js"
 
 const player = start()
-
-if (!player){
-    return ;
-}
-
 let game = true;
 let result;
+
+if (!player){
+    game = false;
+}
 
 while (game) {
     for(const row of player.getInfo.get("labirint")){
