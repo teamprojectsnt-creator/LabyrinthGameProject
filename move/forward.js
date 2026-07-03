@@ -1,7 +1,5 @@
-
-import { labirint } from "../data/labirint.js";
-import { Player } from "../Player/Player.js";
-import { Icons } from "../data/labirint.js";
+import { Icons } from "../data/labirint.js"
+import { timeStart } from "../time/time.js"
 
 export class ForwardMove {
 
@@ -9,8 +7,8 @@ export class ForwardMove {
 
         const info = player.getInfo();
 
-        if (info.get('startTime') === undefined) {
-            player.setStartTime = Date.now();
+        if (!player.getInfo.get('startTime')){
+            player.setStartTime = timeStart()
         }
 
         const labirintInfo = info.get('labirint');
@@ -21,19 +19,17 @@ export class ForwardMove {
         let col = location[1];
         let nextRow = row - 1;
 
-        if (labirint[nextRow][col] === Icons.wall) {
-            console.log("Game over")
-        }
+        labirint[row][col] = Icons.road;
 
+        if (labirint[nextRow][col] === Icons.wall) {
+            labirint[nextRow][col] = Icons.death;
+            return "death";
+        } else if (labirint[nextRow][col] === Icons.finish) {
+            labirint[nextRow][col] = Icons.player;
+            return "finish";
+        } else {
+            labirint[nextRow][col] = Icons.player;
+            return 'constinue';
+        }
     }
 }
-
-
-const player = new Player('A', 1);
-
-console.log(ForwardMove.forward());
-
-
-
-
-
