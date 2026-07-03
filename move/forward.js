@@ -3,7 +3,7 @@ import { timeStart } from "../time/time.js"
 
 export class ForwardMove {
 
-    static forward (payer) {
+    static forward (player) {
 
         const info = player.getInfo();
 
