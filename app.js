@@ -31,7 +31,9 @@ while (true) {
             }
             break;
         case "s":
-            
+            break;
+        case "x":
+            process.exit(0)
             break;
         default:
             console.log("xato tanlov qildingiz❌ Iltimos qaytadan kiriting❗️")
