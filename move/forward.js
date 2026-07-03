@@ -7,19 +7,21 @@ export class ForwardMove {
 
         const info = player.getInfo;
 
-        if (!player.getInfo.get('startTime')){
+        if (!info.get('startTime')){
             player.setStartTime = timeStart()
         }
 
-        const labirintInfo = info.get('labirint');
-        const labirint = labirintInfo.get('labirint');
-        const location = labirintInfo.get('location');
+        const location = info.get('location');
+        const labirint = info.get('labirint');
         
         let row = location[0];
         let col = location[1];
-        let nextRow = row - 1;
 
+        let nextRow = row - 1;
+        
         labirint[row][col] = Icons.road;
+        
+        player.setLocation = [newRow, col];
 
         if (labirint[nextRow][col] === Icons.wall) {
             labirint[nextRow][col] = Icons.death;
