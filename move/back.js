@@ -1,53 +1,40 @@
 import { Icons } from "../data/labirint.js";
+// import { Player } from "../Player/Player.js";
+import { timeStart } from "../time/time.js";
 
-const icons = new Icons();
 
 export class BackMove {
-    backMove(player) {
+    static backMove(player) {
 
         const info = player.getInfo;
 
         if (info.get("startTime") === undefined) {
-            player.setStartTime = Date.now();
+            player.setStartTime = startTime();
         }
 
-        const labirintInfo = info.get("labirint");
-        const labirint = labirintInfo.get("labirint");
-        const location = labirintInfo.get("location");
+        const labirint = info.get("labirint");
+        const location = info.get("location");
 
         let row = location[0];
         let col = location[1];
-
         const nextRow = row + 1;
 
+        labirint[row][col] = Icons.road;
+        player.setLocation = [nextRow, col];
+
+
         if (labirint[nextRow][col] === Icons.wall) {
-            console.log("💀 Game Over");
-
-            player.setEndTime = Date.now();
-
-            return false;
+            labirint[nextRow][col] = Icons.death;
+            return 'death';
         }
-        if (labirint[nextRow][col] === Icons.finish) {
-
-            labirint[row][col] = icons.road;
-            labirint[nextRow][col] = icons.player;
-            location[0] = nextRow;
-
-            player.setEndTime = Date.now();
-
-
-            return true;
+        else if (labirint[nextRow][col] === Icons.finish) {
+            labirint[nextRow][col] = Icons.player;
+            return 'finish';
+        }
+        else {
+            labirint[nextRow][col] = Icons.player;
+            return 'continue'
         }
 
-        labirint[row][col] = icons.road;
-        labirint[nextRow][col] = icons.player;
-
-        location[0] = nextRow;
-
-        const steps = info.get("steps");
-        steps.push("S");
-        player.setSteps = steps;
-
-        return true;
     }
 }
