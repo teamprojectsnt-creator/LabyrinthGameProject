@@ -21,7 +21,7 @@ export class ForwardMove {
         
         labirint[row][col] = Icons.road;
         
-        player.setLocation = [newRow, col];
+        player.setLocation = [nextRow, col];
 
         if (labirint[nextRow][col] === Icons.wall) {
             labirint[nextRow][col] = Icons.death;

@@ -12,7 +12,7 @@ export class RightMove {
         const labirint = player.getInfo.get('labirint');
     
         labirint[location[0]][location[1]] = Icons.road;
-
+              
         player.setLocation = [location[0], ++location[1]] 
 
         if (labirint[location[0]][location[1]] ==  Icons.wall){

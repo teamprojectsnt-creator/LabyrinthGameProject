@@ -5,7 +5,7 @@ export class Player {
         this.id = id;
     }
 
-    #location = [11,1]
+    #location = [12,11]
     #startTime = undefined;
     #endTime = undefined;
     #stars = 0;
