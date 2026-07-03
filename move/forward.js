@@ -5,7 +5,7 @@ export class ForwardMove {
 
     static forward (player) {
 
-        const info = player.getInfo();
+        const info = player.getInfo;
 
         if (!player.getInfo.get('startTime')){
             player.setStartTime = timeStart()
