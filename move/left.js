@@ -21,6 +21,7 @@ export class LeftMove{
 
         }else if (labirint[location[0]][location[1]]== Icons.finish){
             labirint[location[0]][location[1]] = Icons.players;
+            console.log(labirint[location[0]][location[1]])
             return 'finish';
         }
         else{

@@ -10,13 +10,19 @@ let result;
 
 if (!player){
     game = false;
+    console.log('sizni kutamiz')
 }
 
-while (game) {
+(function(){
+    console.clear()
     for(const row of player.getInfo.get("labirint")){
         console.log(row.join(""))
     }
     console.log(moveInfo())
+}())
+
+while (game) {
+
     const choice = prompt("yuring: ")
     switch (choice) {
         case "a":
@@ -94,5 +100,10 @@ while (game) {
             console.log("xato tanlov qildingiz❌ Iltimos qaytadan kiriting❗️")
             continue
     }
+    for(const row of player.getInfo.get("labirint")){
+        console.log(row.join(""))
+    }
+    console.log(game ? moveInfo() : 'tu-gaadi!')
+
 }
 

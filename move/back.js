@@ -9,7 +9,7 @@ export class BackMove {
         const info = player.getInfo;
 
         if (info.get("startTime") === undefined) {
-            player.setStartTime = startTime();
+            player.setStartTime = timeStart();
         }
 
         const labirint = info.get("labirint");
@@ -18,7 +18,12 @@ export class BackMove {
         let row = location[0];
         let col = location[1];
         const nextRow = row + 1;
-
+        
+        if (nextRow === labirint.length){
+            labirint[row][col] = Icons.death;
+            return 'death'
+        }
+        
         labirint[row][col] = Icons.road;
         player.setLocation = [nextRow, col];
 
@@ -35,6 +40,7 @@ export class BackMove {
             labirint[nextRow][col] = Icons.player;
             return 'continue'
         }
-
+        
+        
     }
 }
