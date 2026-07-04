@@ -5,14 +5,14 @@ export class LeftMove{
     static leftMove(player){
 
         if (!player.getInfo.get("startTime")){
-            playersetStartTime = timeStart()
+            player.setStartTime = timeStart()
         }
 
         const location = player.getInfo.get('location');
         const labirint = player.getInfo.get('labirint');
 
-        labirint[location[0]][location[1]]=Icons.road;
-        
+        labirint[location[0]][location[1]] = Icons.road;
+
         player.setLocation = [location[0],--location[1]]
 
         if (labirint[location[0]][location[1]]== Icons.wall){
@@ -20,8 +20,7 @@ export class LeftMove{
             return 'death';
 
         }else if (labirint[location[0]][location[1]]== Icons.finish){
-            labirint[location[0]][location[1]] = Icons.players;
-            console.log(labirint[location[0]][location[1]])
+            labirint[location[0]][location[1]] = Icons.player;
             return 'finish';
         }
         else{
