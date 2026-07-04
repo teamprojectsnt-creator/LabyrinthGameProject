@@ -1,0 +1,14 @@
+QOIDA: 
+-- task ustida ishlash uchun butun <LabyrinthGameProject> papkasini kochirib olib 
+git"ga tegishli bolmagan papkada ishlash
+
+-- task bajarilsa push qilishdan avval qaysi fayllar ozgarganini team"ga yozib qoyish
+
+-- bag chiqsa <tasks.txt> ga toliq malumot berib qoshib qoyish
+
+
+1) boshlanishida Enter o'rniga boshqa narsa kiritib yuborsa while aylanib ketvotti, 
+<O'yinni boshlash uchun Enter ni bosing!>   chiqvotti
+
+2) diffTime <move/move.js>ni ichiga tushib qolgan, logika kerak, faqat <finish> yoki <death> bol'ganida 
+move.js dan tashqarida diffTime ishga tushishi kerak   
