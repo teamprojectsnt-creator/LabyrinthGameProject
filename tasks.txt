@@ -2,13 +2,42 @@ QOIDA:
 -- task ustida ishlash uchun butun <LabyrinthGameProject> papkasini kochirib olib 
 git"ga tegishli bolmagan papkada ishlash
 
--- task bajarilsa push qilishdan avval qaysi fayllar ozgarganini team"ga yozib qoyish
+-- task bajarilsa push qilishdan avval qaysi fayllar ozgarganini team"ga yozib qoyish 
 
 -- bag chiqsa <tasks.txt> ga toliq malumot berib qoshib qoyish
 
+-- yechimlarni korsatib qo'yish
 
-1) boshlanishida Enter o'rniga boshqa narsa kiritib yuborsa while aylanib ketvotti, 
-<O'yinni boshlash uchun Enter ni bosing!>   chiqvotti
+TASKS:
+
 
 2) diffTime <move/move.js>ni ichiga tushib qolgan, logika kerak, faqat <finish> yoki <death> bol'ganida 
 move.js dan tashqarida diffTime ishga tushishi kerak   
+
+
+DONE:
+
+1) boshlanishida Enter o'rniga boshqa narsa kiritib yuborsa while aylanib ketvotti, 
+<O'yinni boshlash uchun Enter ni bosing!>   chiqvotti.  ✅✅✅
+
+fayl: ./info/menu.js
+
+edi: 
+    let enter1 = prompt("\nEnter... ");
+    console.clear();
+    
+    while(enter1 !== "") {
+    console.log("O'yinni boshlash uchun Enter ni bosing! ");
+    }
+yechim:    
+
+    let enter1 = prompt("\nEnter... ");
+    console.clear();
+    
+    while(enter1 !== "") {
+        console.log("O'yinni boshlash uchun Enter ni bosing! ");
+        enter1 = prompt("\nEnter... ");
+        console.clear();
+    }
+
+-----------------------------------------------------------------------------------------------------

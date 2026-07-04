@@ -51,8 +51,11 @@ export function start () {
     
     while(enter1 !== "") {
         console.log("O'yinni boshlash uchun Enter ni bosing! ");
+        enter1 = prompt("\nEnter... ");
+        console.clear();
     }
     
+
     const name = prompt("Name: ");
     const newPlayer = new Player(name, 1);
     console.clear();
