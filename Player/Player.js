@@ -7,7 +7,7 @@ export class Player {
 
     #location = [12,11]
     #startTime = undefined;
-    #endTime = undefined;
+    #timeToPath = undefined;
     #stars = 0;
     #steps = [];
     #labirint = labirint;
@@ -20,9 +20,9 @@ export class Player {
         this.#startTime = time;
     }
 
-    set setEndTime(time){  // milliSek
+    set setTimeToPath(time){  // milliSek
         if (!time) return
-        this.#endTime = time;
+        this.#timeToPath = time;
     }
 
     set addStars(starsCount = 0){
@@ -49,10 +49,14 @@ export class Player {
         this.#location = arr;
     }
 
+    get getStartTime(){
+        return this.#startTime
+    }
+
     get getInfo(){
         return new Map([
             ['startTime', this.#startTime],
-            ['endTime', this.#endTime],
+            ['timeToPath', this.#timeToPath],
             ['stars', this.#stars],
             ['steps', this.#steps],
             ['labirint', this.#labirint],

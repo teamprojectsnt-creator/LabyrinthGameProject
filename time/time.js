@@ -9,7 +9,7 @@ function timeStart(){
 
 function diffTime(timeStart){
     const date = Date.now();
-    return Math.floor((date - start) / 1000);
+    return Math.floor((date - timeStart) / 1000);
 };
 
 

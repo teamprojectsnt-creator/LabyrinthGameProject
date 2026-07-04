@@ -1,15 +1,10 @@
 import { Icons } from "../data/labirint.js"
-import { timeStart } from "../time/time.js"
 
 export class ForwardMove {
 
     static forward (player) {
 
         const info = player.getInfo;
-
-        if (!info.get('startTime')){
-            player.setStartTime = timeStart()
-        }
 
         const location = info.get('location');
         const labirint = info.get('labirint');

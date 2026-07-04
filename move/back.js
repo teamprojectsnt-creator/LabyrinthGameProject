@@ -1,16 +1,9 @@
 import { Icons } from "../data/labirint.js";
-// import { Player } from "../Player/Player.js";
-import { timeStart } from "../time/time.js";
-
 
 export class BackMove {
     static backMove(player) {
 
         const info = player.getInfo;
-
-        if (info.get("startTime") === undefined) {
-            player.setStartTime = timeStart();
-        }
 
         const labirint = info.get("labirint");
         const location = info.get("location");

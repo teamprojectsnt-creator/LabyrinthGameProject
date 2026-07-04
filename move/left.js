@@ -1,13 +1,7 @@
 import { Icons } from "../data/labirint.js";
-import { timeStart } from "../time/time.js";
 
 export class LeftMove{
     static leftMove(player){
-
-        if (!player.getInfo.get("startTime")){
-            player.setStartTime = timeStart()
-        }
-
         const location = player.getInfo.get('location');
         const labirint = player.getInfo.get('labirint');
 

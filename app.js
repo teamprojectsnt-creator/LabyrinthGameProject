@@ -3,6 +3,8 @@ import { RightMove } from "./move/right.js"
 import { ForwardMove } from "./move/forward.js" 
 import { BackMove } from "./move/back.js"
 import { LeftMove } from "./move/left.js"
+import { timeStart, diffTime} from "./time/time.js"
+
 
 const player = start()
 let game = true;
@@ -10,19 +12,21 @@ let result;
 
 if (!player){
     game = false;
-    console.log('sizni kutamiz')
+    console.log('Sizni kutamiz')
 }
 
-(function(){
+if (game){
     console.clear()
     for(const row of player.getInfo.get("labirint")){
         console.log(row.join(""))
     }
+    console.log('vaqt boshlandi')
+    player.setStartTime = timeStart();
     console.log(moveInfo())
-}())
+}
 
 while (game) {
-
+    
     const choice = prompt("yuring: ")
     switch (choice) {
         case "a":
@@ -33,9 +37,11 @@ while (game) {
                     break;
                 case "death":
                     game = false;
+                    player.setTimeToPath = diffTime(player.getStartTime)
                     break;
                 case "finish":
                     game = false;
+                    player.setTimeToPath = diffTime(player.getStartTime)
                     break;
                 default:
                     console.log("xato tanladingiz❗️")
@@ -50,9 +56,11 @@ while (game) {
                     break;
                 case "death":
                     game = false;
+                    player.setTimeToPath = diffTime(player.getStartTime)
                     break;
                 case "finish":
                     game = false;
+                    player.setTimeToPath = diffTime(player.getStartTime)
                     break;
                 default:
                     console.log("xato tanladingiz❗️")
@@ -67,9 +75,11 @@ while (game) {
                     break;
                 case "death":
                     game = false;
+                    player.setTimeToPath = diffTime(player.getStartTime)
                     break;
                 case "finish":
                     game = false;
+                    player.setTimeToPath = diffTime(player.getStartTime)
                     break;
                 default:
                     console.log("xato tanladingiz❗️")
@@ -84,9 +94,11 @@ while (game) {
                     break;
                 case "death":
                     game = false;
+                    player.setTimeToPath = diffTime(player.getStartTime)
                     break;
                 case "finish":
                     game = false;
+                    player.setTimeToPath = diffTime(player.getStartTime)
                     break;
                 default:
                     console.log("xato tanladingiz❗️")
@@ -105,5 +117,7 @@ while (game) {
     }
     console.log(game ? moveInfo() : 'tu-gaadi!')
 
+    
 }
+console.log(player.getInfo)
 
