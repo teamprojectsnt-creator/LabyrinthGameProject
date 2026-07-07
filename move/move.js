@@ -4,82 +4,75 @@ import { BackMove } from "../move/back.js"
 import { LeftMove } from "../move/left.js"
 import { diffTime } from "../time/time.js"
 import { prompt } from "../info/menu.js" 
+import { AppMenu } from "../info/menu.js"
 
-export function move(player){
+export function move(){
     const choice = prompt("yuring: ")
     let result;
     switch (choice) {
         case "a":
-            result = LeftMove.leftMove(player);
+            result = LeftMove.leftMove();
             console.clear()
             switch (result) {
                 case "continue":
+                    console.log('continue')
                     return true
                 case "death":
-                    player.setTimeToPath = diffTime(player.getStartTime)
+                    AppMenu.currentPlayer.setTimeToPath = diffTime(AppMenu.currentPlayer.getStartTime)
+                    console.log('death')
                     return false;         
                 case "finish":
-                    player.setTimeToPath = diffTime(player.getStartTime)
+                    AppMenu.currentPlayer.setTimeToPath = diffTime(AppMenu.currentPlayer.getStartTime)
+                    console.log('finish')
                     return false;
-                default:
-                    console.log("xato tanladingiz❗️")
-                    return true 
             }   
             break;
         case "w":
-            result = ForwardMove.forward(player);
+            result = ForwardMove.forward();
             console.clear()
             switch (result) {
                 case "continue":
                     return true
                 case "death":
-                    player.setTimeToPath = diffTime(player.getStartTime)
+                    AppMenu.currentPlayer.setTimeToPath = diffTime(AppMenu.currentPlayer.getStartTime)
                     return false;         
                 case "finish":
-                    player.setTimeToPath = diffTime(player.getStartTime)
+                    AppMenu.currentPlayer.setTimeToPath = diffTime(AppMenu.currentPlayer.getStartTime)
                     return false;
-                default:
-                    console.log("xato tanladingiz❗️")
-                    return true 
             }   
             break;
         case "d":
-            result = RightMove.rightMove(player)
+            result = RightMove.rightMove()
             console.clear()
             switch (result) {
                 case "continue":
                     return true
                 case "death":
-                    player.setTimeToPath = diffTime(player.getStartTime)
+                    AppMenu.currentPlayer.setTimeToPath = diffTime(AppMenu.currentPlayer.getStartTime)
                     return false;         
                 case "finish":
-                    player.setTimeToPath = diffTime(player.getStartTime)
+                    AppMenu.currentPlayer.setTimeToPath = diffTime(AppMenu.currentPlayer.getStartTime)
                     return false;
-                default:
-                    console.log("xato tanladingiz❗️")
-                    return true 
             }   
             break;
         case "s":
-            result = BackMove.backMove(player);
+            result = BackMove.backMove();
             console.clear()
             switch (result) {
                 case "continue":
                     return true
                 case "death":
-                    player.setTimeToPath = diffTime(player.getStartTime)
+                    AppMenu.currentPlayer.setTimeToPath = diffTime(AppMenu.currentPlayer.getStartTime)
                     return false;         
                 case "finish":
-                    player.setTimeToPath = diffTime(player.getStartTime)
+                    AppMenu.currentPlayer.setTimeToPath = diffTime(AppMenu.currentPlayer.getStartTime)
                     return false;
-                default:
-                    console.log("xato tanladingiz❗️")
-                    return true 
             }            
             break;
         case "x":
             process.exit(0);           
         default:
+            console.clear()
             console.log("xato tanlov qildingiz❌ Iltimos qaytadan kiriting❗️")
             return true
     }

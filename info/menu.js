@@ -1,50 +1,49 @@
-import { Player } from '../Player/Player.js'
 import promptSync from 'prompt-sync';
-
+import { addPlayer, addData, getData, checkPlayer } from '../file/file.js';
+import { Player } from '../Player/Player.js';
 export const prompt = promptSync();
 
-function showIntro() {
-    console.clear();
+export class AppMenu {
+    static currentPlayer = null;
 
-    console.log(`
-              LABIRINT O'YINIGA XUSH KELIBSIZ!
+    static showIntro() {
+        console.clear();
 
-Sizning vazifangiz — 🕵️ personajni labirint bo'ylab
-harakatlantirib, 🔲 marraga xavfsiz yetkazish.
+        console.log(`
+                LABIRINT O'YINIGA XUSH KELIBSIZ!
 
-⭐ Yo'lda uchragan barcha yulduzlarni yig'ishga harakat qiling.
+    Sizning vazifangiz — 🕵️ personajni labirint bo'ylab
+    harakatlantirib, 🔲 marraga xavfsiz yetkazish.
 
-⚠️ Agar 🔳 devorga kirib ketsangiz,
-💀 GAME OVER bo'ladi va o'yin yakunlanadi.
+    ⭐ Yo'lda uchragan barcha yulduzlarni yig'ishga harakat qiling.
 
-🏆 Marraga yetib borsangiz, siz g'olib bo'lasiz!
+    ⚠️ Agar 🔳 devorga kirib ketsangiz,
+    💀 GAME OVER bo'ladi va o'yin yakunlanadi.
 
-══════════════════════════════════════════════════════════════
-                     NAMUNAVIY XARITA
-══════════════════════════════════════════════════════════════
+    🏆 Marraga yetib borsangiz, siz g'olib bo'lasiz!
 
-🔳🔳🔳🔳🔳🔳🔳🔳🔳🔳
-🔳🕵️ ⬜⬜🔳⬜⭐⬜🔲🔳
-🔳⬜🔳⬜🔳⬜🔳⬜⬜🔳
-🔳⭐🔳⬜⬜⬜🔳⬜⭐🔳
-🔳⬜🔳🔳🔳⬜🔳⬜⬜🔳
-🔳⬜⬜⭐⬜⬜⬜🔳⬜🔳
-🔳🔳🔳🔳🔳🔳🔳🔳🔳🔳
+    ══════════════════════════════════════════════════════════════
+                        NAMUNAVIY XARITA
+    ══════════════════════════════════════════════════════════════
 
-══════════════════════════════════════════════════════════════
-                       BOSHQARUV
-══════════════════════════════════════════════════════════════
+    🔳🔳🔳🔳🔳🔳🔳🔳🔳🔳
+    🔳🕵️ ⬜⬜🔳⬜⭐⬜🔲🔳
+    🔳⬜🔳⬜🔳⬜🔳⬜⬜🔳
+    🔳⭐🔳⬜⬜⬜🔳⬜⭐🔳
+    🔳⬜🔳🔳🔳⬜🔳⬜⬜🔳
+    🔳⬜⬜⭐⬜⬜⬜🔳⬜🔳
+    🔳🔳🔳🔳🔳🔳🔳🔳🔳🔳
 
-W — Tepaga
-A — Chapga
-S — Pastga
-D — O'ngga
+    ══════════════════════════════════════════════════════════════
+                        BOSHQARUV
+    ══════════════════════════════════════════════════════════════
 
-`);
-}
+    W — Tepaga
+    A — Chapga
+    S — Pastga
+    D — O'ngga        
 
-export function start () {
-    showIntro();
+    `);
 
     let enter1 = prompt("\nEnter... ");
     console.clear();
@@ -54,37 +53,94 @@ export function start () {
         enter1 = prompt("\nEnter... ");
         console.clear();
     }
-    
+    }
 
-    const name = prompt("Name: ");
-    const newPlayer = new Player(name, 1);
-    console.clear();
-    
-    let isRun = true; 
+    static async singUp(){
+        let name = prompt("Name: ");
+        console.clear();
+        AppMenu.currentPlayer = await addPlayer(name); 
+        console.log(`sizning ID: ${AppMenu.currentPlayer.id}, uni unutmang`)
+    }
 
-    while(isRun){
+    static async signIn(){
+        let name = prompt("Name: ");
+        let id = prompt('ID: ');
+        console.clear();
+
+        let player = await checkPlayer(name, id);
+        while(!player){
+            console.log('Bunday oyinchi topilmadi' )
+            let name = prompt("Name: ");
+            let id = prompt('ID: ');
+            console.clear();
+            player = await checkPlayer(name, id)
+        }
+        
+        const newPlayer = new Player(player.name, player.id)
+        
+        newPlayer.setHistory = player.history;
+
+        AppMenu.currentPlayer = newPlayer
+    }
+
+    static signOut(){
+        console.log(`${AppMenu.currentPlayer.name} tizimdan chiqdi`);
+        AppMenu.currentPlayer = null;
+        prompt("\nDavom etish uchun Enter bosing..."); // ждём реакции юзера
+        console.clear();
+    }
+
+    static async signs() {
+    
+        let signWhile = true;
+        while(signWhile){
+            let result = prompt(
+                '1.Sign up\n2.Sign in\n>>> '
+            )
+            console.clear()
+            
+            if (result === '1'){
+                signWhile = false;
+                await AppMenu.singUp();
+            }else if (result === '2'){
+                console.log('AppMenu.signIn();')
+                signWhile = false;
+                await AppMenu.signIn();
+            }else {
+                console.log("1 yoki 2 kiriting")
+            }
+        
+        }
+    }
+
+    static  gameMenu(){
+        let menu = true;
+        let entery;
+        while (menu) {        
             console.log("1 - O`yinni boshlash");
+            console.log("2 - sign out")
             console.log("0 - Dasturdan chiqish");
         
-            let entry = +prompt(">>> ");
+            entery = prompt(">>> ");
             console.clear()
-            if (entry){
-                return newPlayer
-            } else {
-                return 0
-            }
-        };
-}
 
-export function moveInfo () {
-    return `══════════════════════════════════════════════════════════════
-                       BOSHQARUV
-══════════════════════════════════════════════════════════════
+            '120'.includes(entery) ? menu = false 
+                                   : console.log('1, 2, yoki 0 kiriting')
+        }
 
-W — Tepaga
-A — Chapga
-S — Pastga
-D — O'ngga
+        return entery
+    }
 
-`
+    static moveInfo () {
+        return `══════════════════════════════════════════════════════════════
+                           BOSHQARUV
+    ══════════════════════════════════════════════════════════════
+    
+    W — Tepaga
+    A — Chapga
+    S — Pastga
+    D — O'ngga
+    
+    `
+    }
 }

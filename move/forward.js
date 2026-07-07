@@ -1,10 +1,10 @@
 import { Icons } from "../data/labirint.js"
-
+import { AppMenu } from "../info/menu.js";
 export class ForwardMove {
 
-    static forward (player) {
+    static forward () {
 
-        const info = player.getInfo;
+        const info = AppMenu.currentPlayer.getInfo;
 
         const location = info.get('location');
         const labirint = info.get('labirint');
@@ -16,7 +16,7 @@ export class ForwardMove {
         
         labirint[row][col] = Icons.road;
         
-        player.setLocation = [nextRow, col];
+        AppMenu.currentPlayer.setLocation = [nextRow, col];
 
         if (labirint[nextRow][col] === Icons.wall) {
             labirint[nextRow][col] = Icons.death;
@@ -26,7 +26,7 @@ export class ForwardMove {
             return "finish";
         } else {
             labirint[nextRow][col] = Icons.player;
-            return 'constinue';
+            return 'continue';
         }
     }
 }

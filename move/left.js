@@ -1,13 +1,13 @@
 import { Icons } from "../data/labirint.js";
-
+import { AppMenu } from "../info/menu.js";
 export class LeftMove{
-    static leftMove(player){
-        const location = player.getInfo.get('location');
-        const labirint = player.getInfo.get('labirint');
+    static leftMove(){
+        const location = AppMenu.currentPlayer.getInfo.get('location');
+        const labirint = AppMenu.currentPlayer.getInfo.get('labirint');
 
         labirint[location[0]][location[1]] = Icons.road;
 
-        player.setLocation = [location[0],--location[1]]
+        AppMenu.currentPlayer.setLocation = [location[0],--location[1]]
 
         if (labirint[location[0]][location[1]]== Icons.wall){
             labirint[location[0]][location[1]]=Icons.death;

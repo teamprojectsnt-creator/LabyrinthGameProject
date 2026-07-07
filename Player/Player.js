@@ -1,19 +1,25 @@
-import {labirint} from "../data/labirint.js"
+
+
+
+
 export class Player {
     constructor(name , id){
         this.name = name;
         this.id = id;
     }
 
-    #location = [12,11]
+    #location = []
     #startTime = undefined;
     #timeToPath = undefined;
-    #stars = 0;
-    #steps = [];
-    #labirint = labirint;
+    #labirint = [];
+    #history = [];
 
     //get info
     //all set
+
+    set setLabirint(labirint){
+        this.#labirint = structuredClone(labirint)
+    }
 
     set setStartTime(time){ // milliSek
         if (!time) return
@@ -25,42 +31,49 @@ export class Player {
         this.#timeToPath = time;
     }
 
-    set addStars(starsCount = 0){
-        if (!starsCount) return
-        this.#stars = starsCount;
-    }
-
-    set setSteps(stepsCount){
-        if (!stepsCount) return
-        this.#steps = stepsCount;
-    }
-
-    set setLabirint(map){
-        if (!map.length) return
-        this.#labirint = map;
-    }
-
     set setLocation(arr){
-        try {
-        if (!arr.length) return;
-        } catch {
-            return;
+        try{
+        if (arr.length === 2)
+            this.#location = arr;
+        } catch(err) {
+            console.log('Error on setLocation, ', err);
         } 
-        this.#location = arr;
     }
 
     get getStartTime(){
         return this.#startTime
     }
 
+    set setHistory(arr){
+        try{
+        if (arr.length)
+            this.#history.push(arr.flat(1));
+        } catch(err) {
+            console.log('Error on setHistory, ', err);
+        } 
+    }
+
+    set addToHistory(arr){
+    try{
+        if (arr.length)
+            if (this.#history.length > 4){
+                this.#history.shift()
+            }
+            this.#history.push(arr);
+        } catch(err) {
+            console.log('Error on setHistory, ', err);
+        } 
+    }
+
     get getInfo(){
         return new Map([
+            ['name', this.name],
+            ['id', this.id],
             ['startTime', this.#startTime],
             ['timeToPath', this.#timeToPath],
-            ['stars', this.#stars],
-            ['steps', this.#steps],
             ['labirint', this.#labirint],
-            ['location', this.#location]
+            ['location', this.#location],
+            ['history', this.#history]
             ])
     }
 }

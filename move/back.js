@@ -1,9 +1,9 @@
 import { Icons } from "../data/labirint.js";
-
+import { AppMenu } from "../info/menu.js";
 export class BackMove {
-    static backMove(player) {
+    static backMove() {
 
-        const info = player.getInfo;
+        const info = AppMenu.currentPlayer.getInfo;
 
         const labirint = info.get("labirint");
         const location = info.get("location");
@@ -18,19 +18,22 @@ export class BackMove {
         }
         
         labirint[row][col] = Icons.road;
-        player.setLocation = [nextRow, col];
+        AppMenu.currentPlayer.setLocation = [nextRow, col];
 
 
         if (labirint[nextRow][col] === Icons.wall) {
             labirint[nextRow][col] = Icons.death;
+            console.log('wall')
             return 'death';
         }
         else if (labirint[nextRow][col] === Icons.finish) {
             labirint[nextRow][col] = Icons.player;
+            console.log('finish')
             return 'finish';
         }
         else {
             labirint[nextRow][col] = Icons.player;
+            console.log('player')
             return 'continue'
         }
         
