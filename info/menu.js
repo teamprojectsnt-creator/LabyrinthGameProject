@@ -119,12 +119,13 @@ export class AppMenu {
         while (menu) {        
             console.log("1 - O`yinni boshlash");
             console.log("2 - sign out")
+            console.log("3 - history")
             console.log("0 - Dasturdan chiqish");
         
             entery = prompt(">>> ");
             console.clear()
 
-            '120'.includes(entery) ? menu = false 
+            '1230'.includes(entery) ? menu = false 
                                    : console.log('1, 2, yoki 0 kiriting')
         }
 
@@ -142,5 +143,16 @@ export class AppMenu {
     D — O'ngga
     
     `
+    }
+
+    static showHistory(){
+        const history = AppMenu.currentPlayer.getInfo.get('history');
+        console.log(history.length)
+        for (let [labirint, time] of history){
+            for (let qator of labirint){
+                console.log(qator.join(''))
+            }
+            console.log(`\n${time} sekund\n\n`)
+        }
     }
 }

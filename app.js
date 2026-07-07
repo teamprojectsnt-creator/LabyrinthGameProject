@@ -3,7 +3,7 @@ import { timeStart } from "./time/time.js"
 import { move } from "./move/move.js"
 import { labirint } from "./data/labirint.js";
 import { upgradDataPlayerHistory } from "./file/file.js";
-
+import { prompt } from "./info/menu.js";
 
 AppMenu.showIntro();
 
@@ -41,7 +41,7 @@ async function nimadur(params) {
                 console.log(game ? AppMenu.moveInfo() : 'tu-gaadi!')
             }
 
-            AppMenu.currentPlayer.addToHistory = [AppMenu.currentPlayer.getInfo.get('labirint'),
+            AppMenu.currentPlayer.addToHistory = [structuredClone(AppMenu.currentPlayer.getInfo.get('labirint')),
                                                 AppMenu.currentPlayer.getInfo.get('timeToPath')]
 
             AppMenu.currentPlayer.setStartTime = undefined;
@@ -53,6 +53,12 @@ async function nimadur(params) {
             AppMenu.signOut()
             gameing = false;
             nimadur();
+
+        }else if (entery === '3'){
+            console.clear()
+            AppMenu.showHistory();
+            prompt('Enter...')
+            console.clear()
         }else if (entery === '0'){
             console.log('Sizni kutamiz');
             process.exit()
